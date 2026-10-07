@@ -9,7 +9,7 @@
 
 <div align="center">
   <img src="frontend/public/logo.png" alt="OmniRAG Logo" width="200" style="border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
-  <p><i>State-of-the-art Hybrid Search, Neural Reranking, and Agentic Routing in one premium workspace.</i></p>
+  <p><i>State-of-the-art Hybrid Search, Serverless Neural Reranking, and Agentic Routing in one premium workspace.</i></p>
 </div>
 
 ---
@@ -31,16 +31,17 @@
 ---
 
 ## ⚠️ The Problem
-Enterprise data is fragmented across PDFs, CSVs, and raw source code. Standard RAG (Retrieval-Augmented Generation) pipelines rely purely on semantic similarity, which fails catastrophically on exact keyword searches (like IDs or names) and frequently hallucinates when faced with massive, multi-source document ingestion.
+Enterprise data is fragmented across PDFs, CSVs, and raw source code. Standard RAG pipelines rely purely on local semantic similarity, which fails catastrophically on exact keyword searches (like IDs or names) and demands massive server RAM (1GB+) to run PyTorch embeddings locally.
 
 ## 💡 The Solution: OmniRAG Enterprise
-A comprehensive, full-stack AI workspace that doesn't just embed text—it orchestrates an intelligent **Hybrid Retrieval Pipeline**. By combining exact keyword matching (BM25) with dense vector semantics and passing the results through a Cross-Encoder Neural Reranker, OmniRAG guarantees pinpoint accuracy. 
+A comprehensive, full-stack AI workspace architected for **zero-footprint serverless deployments**. It orchestrates an intelligent **Hybrid Retrieval Pipeline** by combining exact keyword matching (BM25) with dense vector semantics via the **Hugging Face Inference API**, completely offloading the heavy ML processing. It then passes the results through a Serverless Cross-Encoder Neural Reranker to guarantee pinpoint accuracy while comfortably running on 512MB free-tier cloud servers!
 
 ### 🛠️ The Tech Stack
 * **Frontend:** React + Vite (Premium Glassmorphism UI)
 * **Backend:** FastAPI (Python)
-* **Vector Database:** ChromaDB (Local Persistent Storage)
-* **LLM Engine:** Meta LLaMA 3.3 (via Groq for ultra-fast inference)
+* **Vector Database:** ChromaDB 
+* **LLM Engine:** Meta LLaMA 3.3 (via Groq API for ultra-fast inference)
+* **Embeddings & Reranking:** Hugging Face Inference API (Serverless offloading)
 * **Retrieval Algorithms:** BM25 (Lexical) + Dense Semantic Embeddings + Cross-Encoder Reranking
 
 ---
@@ -62,25 +63,27 @@ A comprehensive, full-stack AI workspace that doesn't just embed text—it orche
 ## 🎯 Strategic Logic Flow
 
 ### 1. Multi-Source Ingestion
-Drag and drop PDFs, CSVs, or `.js`/`.py` code files. The system intelligently routes the file to the correct chunking algorithm (Semantic Chunking for prose, Fixed/AST Chunking for code) and embeds it into ChromaDB.
+Drag and drop PDFs, CSVs, or `.js`/`.py` code files. The system intelligently routes the file to the correct chunking algorithm.
 
-### 2. Hybrid Retrieval Engine
+### 2. Zero-Footprint Hybrid Retrieval Engine
 When a query is received, the system forks the search:
 * **Lexical Path (BM25):** Searches for exact keyword matches.
-* **Semantic Path (Dense Vectors):** Searches for contextual meaning.
+* **Semantic Path (Hugging Face API):** Pings the Hugging Face Inference API to generate dense vectors without spiking local server RAM.
 
-### 3. Neural Reranking (The Accuracy Edge)
-The results from both paths are merged and passed to a **Cross-Encoder Model** which scores the exact relevance of each chunk against the user's prompt, filtering out noise and presenting only the absolute highest-confidence data to the LLM.
+### 3. Serverless Neural Reranking (The Accuracy Edge)
+The results from both paths are merged and passed to a **Cross-Encoder Model** (also hosted on Hugging Face). The API scores the exact relevance of each chunk against the user's prompt, filtering out noise and presenting only the absolute highest-confidence data to the LLM.
 
 ---
 
 ## 🚀 Quick Start
 
-### Option 1: One-Click Hugging Face Deployment (Recommended)
-This project is packaged and ready for Hugging Face Spaces!
-1. Create a new **Docker** Space on [Hugging Face](https://huggingface.co/spaces).
-2. Upload the contents of the deployment folder (`Dockerfile`, `requirements.txt`, `server.py`, and `frontend/dist`).
-3. The Space will automatically build the React app and launch the FastAPI server!
+### Option 1: Render / Docker Deployment (Recommended)
+Because OmniRAG uses serverless API offloading, it is lightweight enough to deploy on Render's 512MB Free Tier!
+1. Create a new **Web Service** on [Render.com](https://render.com).
+2. Connect your GitHub repository.
+3. Select the **Docker** runtime (Render will automatically detect the `Dockerfile`).
+4. (Optional) Add your `.env` as a Secret File.
+5. Deploy and watch your server boot instantly!
 
 ### Option 2: Local Development
 1. **Clone the Repository:**
@@ -105,9 +108,10 @@ This project is packaged and ready for Hugging Face Spaces!
 ## 🌟 Key Features
 
 - **Dynamic Agentic Routing:** Intelligently routes queries based on context.
+- **Serverless ML Architecture:** Offloads embeddings and reranking to Hugging Face to eliminate OOM (Out of Memory) crashes.
 - **Map-Reduce Summarizer:** Synthesizes massive knowledge bases into concise executive briefs.
 - **Glassmorphic UI:** A visually stunning, highly interactive frontend.
-- **Dynamic API Key Configuration:** Securely supply your own Hugging Face and Groq keys directly from the UI to prevent rate limits.
+- **Dynamic API Key Configuration:** Securely supply your own Hugging Face and Groq keys directly from the UI.
 
 ## 💼 Use Cases
 
