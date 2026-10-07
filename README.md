@@ -12,6 +12,7 @@
   <p><i>State-of-the-art Hybrid Search, Serverless Neural Reranking, and Agentic Routing in one premium workspace.</i></p>
 </div>
 
+> Here is the live OmniRag-AI: https://omnirag-ai.onrender.com/
 ---
 
 ## 📑 Table of Contents
