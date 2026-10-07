@@ -4,7 +4,6 @@ python-multipart
 gradio
 python-dotenv
 pymupdf
-sentence-transformers
 chromadb
 rank-bm25
 groq
