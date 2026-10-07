@@ -1,4 +1,4 @@
-# 🧠 OmniRAG Enterprise: Next-Gen Multi-Source RAG Assistant
+# OmniRAG Enterprise: Next-Gen Multi-Source RAG Assistant
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
@@ -118,9 +118,9 @@ This project is packaged and ready for Hugging Face Spaces!
 
 ---
 
-**Designed and Developed with 💡 by Manas Shukla**
+**Designed and Developed with ❤️ by Manas Shukla**
 
 ---
 
-## 👋 Socials:
+## 🌐 Socials:
 [![Portfolio](https://img.shields.io/badge/Portfolio-Website-blue)](https://manas-shukla-portfolio.framer.website) [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/manas_shukla_101) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/manas-shukla-006774370) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:shuklamanas8928@gmail.com)
