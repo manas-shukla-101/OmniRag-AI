@@ -1,0 +1,20 @@
+[
+  {
+    "team": "CSK",
+    "titles": 5,
+    "captain": "MS Dhoni",
+    "home_ground": "Chepauk"
+  },
+  {
+    "team": "MI",
+    "titles": 5,
+    "captain": "Rohit Sharma",
+    "home_ground": "Wankhede"
+  },
+  {
+    "team": "RCB",
+    "titles": 0,
+    "captain": "Faf du Plessis",
+    "home_ground": "Chinnaswamy"
+  }
+]
